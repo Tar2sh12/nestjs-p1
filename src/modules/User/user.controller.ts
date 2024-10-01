@@ -22,7 +22,6 @@ export class UserController {
         @Body() body:SignUpDto,
         @Res() res : Response
     ): Response {
-       console.log(token);
         return res.json({message:'ok',
             data:{
                 id:1,

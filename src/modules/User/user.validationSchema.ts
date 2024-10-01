@@ -1,4 +1,3 @@
-import path from "path";
 import { z } from "zod";
 
 export const signUpValidationSchema = z.object({
@@ -13,7 +12,6 @@ export const signUpValidationSchema = z.object({
             code:z.ZodIssueCode.custom,
             message:"passwords don't match",
             path:["cPass"]
-            
         })
     }
 })
