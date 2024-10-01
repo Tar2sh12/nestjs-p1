@@ -1,4 +1,4 @@
-import { IsEmail, IsInt, IsNotEmpty, IsString, Length, MaxLength, Min, MinLength } from "class-validator";
+import { IsEmail, IsEmpty, IsInt, IsNotEmpty, IsString, Length, MaxLength, Min, MinLength } from "class-validator";
 
 
 export class SignUpDto {
@@ -24,9 +24,7 @@ export class SignUpDto {
     @IsNotEmpty()
     cPass:string;
 
-    @IsInt()
-    @Min(10)
-    age:number;
+
 }
 
 
