@@ -5,8 +5,11 @@ export const signUpValidationSchema = z.object({
     email: z.string().email(),
     password: z.string(),
     cPass: z.string(),
-    age: z.number().min(10)
+    age: z.number().min(10),
+    role: z.enum(['user','admin']).default('user'),
 }).required().superRefine((val:any,ctx:any)=>{
+    
+    
     if(val.password !== val.cPass){
         ctx.addIssue({
             code:z.ZodIssueCode.custom,

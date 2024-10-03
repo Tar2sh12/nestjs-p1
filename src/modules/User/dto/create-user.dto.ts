@@ -1,7 +1,8 @@
-import { IsEmail, IsEmpty, IsInt, IsNotEmpty, IsString, Length, MaxLength, Min, MinLength } from "class-validator";
+import { IsEmail, IsEmpty, IsEnum, IsInt, IsNotEmpty, IsString, Length, MaxLength, Min, MinLength } from "class-validator";
 
 
-export class SignUpDto {
+export class 
+SignUpDto {
     @IsString()
     @IsNotEmpty()
     // @Length(3,20)
@@ -25,12 +26,15 @@ export class SignUpDto {
     cPass:string;
 
 
+    @IsInt()
+    @IsNotEmpty()
+    age:string;
+
+
+    @IsString()
+    @IsEnum(['user','admin'])
+    role:string;
+
 }
 
 
-
-export class TokenInHeaderDto {
-
-    @IsInt()
-    token:string;
-} 
