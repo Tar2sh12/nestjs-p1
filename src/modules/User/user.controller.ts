@@ -68,9 +68,8 @@ export class UserController {
 
   @Get('only-admins')
 //   @UseGuards(AuthGuard)
-//   @UseGuards(RolesGuard)
+@UseGuards(AuthGuard,RolesGuard)
   @Roles(['admin'])
-  @UseGuards(RolesGuard)
   onlyAdmins(@Res() res: Response): Response {
     return res.status(200).json({ message: 'hi admin' });
 
