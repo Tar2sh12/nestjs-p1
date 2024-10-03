@@ -6,7 +6,7 @@ import { IsignUpResponse } from "./Interface";
 import { ZodValidationPipe } from "../../Pipes/validation.pipe";
 import { signUpValidationSchema } from "./user.validationSchema";
 import { AuthGuard } from "../../Guards";
-import { promises } from "dns";
+
 @Controller('user')
 export class UserController {
     constructor(private readonly userService: UserService){}

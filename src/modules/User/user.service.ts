@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import { User } from "../../schemas";
 import { SignUpDto } from "./dto";
 import { hashSync } from "bcrypt";
-
+import { IsignUpResponse } from "./Interface";
 @Injectable()
 export class UserService {
 
@@ -16,7 +16,7 @@ export class UserService {
 
     async signUp(
         @Body() body:SignUpDto,
-    ): Promise<any> {
+    ): Promise<IsignUpResponse> {
         const {name,email,password,age,role} = body;
         const isEmailExists= await this.userModel.findOne({email});
         if(isEmailExists){
@@ -32,9 +32,14 @@ export class UserService {
         })
 
         await user.save();
-
-
-        return user;
+        const response: IsignUpResponse = {
+            _id:user._id,
+            email:user.email,
+            name:user.name,
+            age:user.age,
+            role:user.role
+        }
+        return response;
 
     }
 }

@@ -1,8 +1,7 @@
 export interface IsignUpResponse {
-    message:string;
-    data:{
-        id:number;
+        _id:any;
         email:string;
         name:string;
-    }
+        age:number;
+        role:string;
 }
