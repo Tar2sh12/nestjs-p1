@@ -18,19 +18,23 @@ import { Roles } from 'src/decorators';
 import { CreateProductDto } from './dto';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
-import { RedisOptions } from 'src/core/config';
+import { RedisOptions } from '../../core/config';
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService,@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
+  constructor(
+    private readonly productService: ProductService,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+  ) {}
 
   @Get()
   async getProducts(@Res() res: Response): Promise<Response> {
-    //test redis 
-    RedisOptions.useFactory();
-    
-    const cahedData= await this.cacheManager.set('products','lloll')
-    console.log(cahedData);
-    
+    //test redis
+    // RedisOptions.useFactory();
+
+    const cahedData = await this.cacheManager.set('product', JSON.stringify({title:"mobilee",price:2000}));
+    const cahedData22 = await this.cacheManager.get('products')
+    console.log({ cahedData22 });
+
     return res.status(200).json({ message: 'hi' });
   }
 
