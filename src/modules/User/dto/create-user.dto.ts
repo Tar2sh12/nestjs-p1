@@ -28,7 +28,7 @@ SignUpDto {
 
     @IsInt()
     @IsNotEmpty()
-    age:string;
+    age:number;
 
 
     @IsString()

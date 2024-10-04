@@ -62,7 +62,7 @@ export class UserService {
         email: user.email,
         role: user.role,
       },
-      { secret: 'secretKey', expiresIn: '1d' },
+      { secret:process.env.LOGIN_SECRET , expiresIn: '1d' },
     );
     return token;
   }

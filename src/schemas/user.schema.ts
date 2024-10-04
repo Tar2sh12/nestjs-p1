@@ -1,5 +1,4 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { string } from 'zod';
 // import { HydratedDocument } from 'mongoose';
 
 // export type CatDocument = HydratedDocument<Cat>;
@@ -50,5 +49,4 @@ export class User {
 
 }
 
-const UserSchema = SchemaFactory.createForClass(User);
-export const UserModel = MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])
+export const UserSchema = SchemaFactory.createForClass(User);

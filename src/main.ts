@@ -4,12 +4,14 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT||3000
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     //forbidNonWhitelisted: true
   }))
-  await app.listen(3000,()=>{
-    console.log('Listening on port http://localhost:3000 3000');
+
+  await app.listen(port,()=>{
+    console.log(`Listening on port http://localhost:${port}`);
 });
 }
 bootstrap();

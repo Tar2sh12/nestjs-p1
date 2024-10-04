@@ -18,12 +18,12 @@ export class AuthGuard implements CanActivate {
         throw new BadRequestException('token not found');
     }
     //check prefix 
-    if(!token.startsWith('test')){
+    if(!token.startsWith(process.env.PREFIX)){
         throw new BadRequestException('token not valid');
     }
     const originalToken = token.split(' ')[1];
     //decode 
-    const decodedToken = this.jwtService.verify(originalToken,{secret:"secretKey"});
+    const decodedToken = this.jwtService.verify(originalToken,{secret:process.env.LOGIN_SECRET});
 
     //find user in db 
     const user = await this.userModel.findById(decodedToken._id);

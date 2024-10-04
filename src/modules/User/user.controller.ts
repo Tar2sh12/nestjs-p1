@@ -2,7 +2,6 @@ import {
   Body,
   Controller,
   Get,
-  Headers,
   Post,
   Req,
   Res,
@@ -18,13 +17,10 @@ import {
   signUpValidationSchema,
   loginValidationSchema,
 } from './user.validationSchema';
-import { AuthGuard,RolesGuard } from '../../Guards';
+import { AuthGuard, RolesGuard } from '../../Guards';
 import { Roles } from 'src/decorators';
 
-
-
 @Controller('user')
-
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -65,13 +61,11 @@ export class UserController {
     return res.status(200).json({ message: 'ok', data: data });
   }
 
-
   @Get('only-admins')
-//   @UseGuards(AuthGuard)
-@UseGuards(AuthGuard,RolesGuard)
+  //   @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard, RolesGuard)
   @Roles(['admin'])
   onlyAdmins(@Res() res: Response): Response {
     return res.status(200).json({ message: 'hi admin' });
-
   }
 }
