@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Product } from '../../schemas';
@@ -16,6 +16,9 @@ export class ProductService {
 
   async createProduct(req: Request, body: CreateProductDto): Promise<Product> {
     const { title, price } = body;
+    if(!title || !price){
+      throw new BadRequestException('title and price are required');
+    }
     const userId = req['authUser']._id;
     const product = new this.productModel({
       title,

@@ -14,7 +14,7 @@ import { ProductService } from './product.service';
 import { Request, Response } from 'express';
 
 import { AuthGuard, RolesGuard } from '../../Guards';
-import { Roles } from 'src/decorators';
+import { Roles } from '../../decorators';
 import { CreateProductDto } from './dto';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';

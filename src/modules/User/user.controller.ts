@@ -18,7 +18,7 @@ import {
   loginValidationSchema,
 } from './user.validationSchema';
 import { AuthGuard, RolesGuard } from '../../Guards';
-import { Roles } from 'src/decorators';
+import { Roles } from '../../decorators';
 
 @Controller('user')
 export class UserController {
